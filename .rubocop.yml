@@ -4,3 +4,6 @@ Style/FrozenStringLiteralComment:
 AllCops:
   Exclude:
     - 'Guardfile'
+
+Metrics/LineLength:
+  Enabled: false
