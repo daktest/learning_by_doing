@@ -17,5 +17,5 @@ puts 'That means there are:'
 puts "  #{seconds_in_hour} seconds in an hour,"
 puts "  #{seconds_in_day} seconds in a day,"
 puts "  #{seconds_in_week} seconds in a week"
-puts "That means when you turn 20, you've been alive for #{seconds_in_20_yrs} seconds, "
-puts "and if you make it to 100, you will have lived #{seconds_in_20_yrs * 5} seconds.  Make them count!"
+puts "That means when you turn 20, you've been alive for #{seconds_in_20_yrs} seconds,"
+puts "and if you make it to 100, you will have lived #{seconds_in_20_yrs * 5} seconds. Make them count!"
