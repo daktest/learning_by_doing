@@ -19,12 +19,14 @@ Create a new Television with 'new'.  It has channels 3 to 500 and the volume goe
 =end
 
 class Television
+  attr_reader :on
+  alias_method :on?, :on
 
   CHANNEL_RANGE = 3..500
   VOLUME_RANGE = 0..25
 
   def initialize
-    @powered = false
+    @on = false
     @channel = 3
     @prev_channel = 3
     @volume = 0
@@ -32,7 +34,7 @@ class Television
   end
 
   def power
-    @powered = !@powered
+    @on = !@on
     puts "TV is now #{on? ? 'on' : 'off'}"
   end
 
@@ -109,10 +111,6 @@ class Television
   end
 
   private
-
-  def on?
-    @powered
-  end
 
   def channel_status
     puts "channel set to #{@channel}"
