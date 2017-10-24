@@ -24,7 +24,7 @@ class Television
   VOLUME_RANGE = 0..25
 
   def initialize
-    @is_on = false
+    @powered = false
     @channel = 3
     @prev_channel = 3
     @volume = 0
@@ -32,12 +32,12 @@ class Television
   end
 
   def power
-    @is_on = !@is_on
-    puts "TV is now #{@is_on ? 'on' : 'off'}"
+    @powered = !@powered
+    puts "TV is now #{on? ? 'on' : 'off'}"
   end
 
   def set_channel(number)
-    if @is_on
+    if on?
       if !CHANNEL_RANGE.include?(number)
         puts "channel #{number} does not exist."
       else
@@ -49,7 +49,7 @@ class Television
   end
 
   def channel_up
-    if @is_on
+    if on?
       @prev_channel = @channel
       @channel += 1
       @channel = CHANNEL_RANGE.first if @channel > CHANNEL_RANGE.last
@@ -58,7 +58,7 @@ class Television
   end
 
   def channel_down
-    if @is_on
+    if on?
       @prev_channel = @channel
       @channel -= 1
       @channel = CHANNEL_RANGE.last if @channel < CHANNEL_RANGE.first
@@ -67,7 +67,7 @@ class Television
   end
 
   def channel_swap
-    if @is_on
+    if on?
       temp_chan = @prev_channel
       @prev_channel = @channel
       @channel = temp_chan
@@ -76,21 +76,21 @@ class Television
   end
 
   def volume_up
-    if @is_on
+    if on?
       @volume += 1 if @volume < VOLUME_RANGE.last
       volume_status
     end
   end
 
   def volume_down
-    if @is_on
+    if on?
       @volume -= 1 if @volume > VOLUME_RANGE.first
       volume_status
     end
   end
 
   def mute
-    if @is_on
+    if on?
       if @volume == 0
         @volume = @pre_mute_volume
       else
@@ -102,13 +102,17 @@ class Television
   end
 
   def status
-    if @is_on
+    if on?
       channel_status
       volume_status
     end
   end
 
   private
+
+  def on?
+    @powered
+  end
 
   def channel_status
     puts "channel set to #{@channel}"
