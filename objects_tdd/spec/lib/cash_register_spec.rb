@@ -28,17 +28,14 @@ describe CashRegister do
 
     it 'gives change and sets total to zero if amount > than the total' do
       subject.purchase(5.75)
-      expect do
-        subject.pay(6.00)
-      end.to output("Your change is $0.25\n").to_stdout
+      expect { subject.pay(6.00) }.to output("Your change is $0.25\n").to_stdout
       expect(subject.total).to eq(0)
     end
 
     it 'if partial payment, gives new total' do
       subject.purchase(5.75)
-      expect do
-        subject.pay(5.00)
-      end.to output("Your new total is $0.75\n").to_stdout
+      expect { subject.pay(5.00) }.to \
+        output("Your new total is $0.75\n").to_stdout
     end
   end
 end
