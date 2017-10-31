@@ -1,0 +1,11 @@
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/lib/*.rb'
+
+AllCops:
+  Exclude:
+    - 'Guardfile'
+    - 'Gemfile'
