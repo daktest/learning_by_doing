@@ -18,12 +18,13 @@ class CashRegister
     @total -= amount
 
     if total < 0.0
-      puts "Your change is #{format_total}"
+      change = "Your change is #{format_total}"
       @total = 0.0
+      change
     elsif total > 0.0
-      puts "Your new total is #{format_total}"
+      "Your new total is #{format_total}"
     else
-      puts 'Thank you for purchasing from us!'
+      'Thank you for purchasing from us!'
     end
   end
 end
